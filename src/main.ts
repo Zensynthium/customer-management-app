@@ -10,6 +10,9 @@ import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
+// dataTable
+import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+
 const app = createApp(App)
 
 app.use(createPinia())

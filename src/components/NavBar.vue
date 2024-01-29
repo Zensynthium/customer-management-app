@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 </script>
 
-<style></style>
+<style>
+  .active {
+    color: #0d6efd !important;
+  }
+
+  .navbar {
+    z-index: 100;
+  }
+</style>
 
 <template>
   <div>
@@ -17,10 +27,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">View</a>
+              <a class="nav-link" :class="{ active: route.path === '/' }" :aria-current="route.path === '/' ? 'page' : false" href="/">View</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Create</a>
+              <a class="nav-link" :class="{ active: route.path === '/create' }" :aria-current="route.path === '/create' ? 'page' : false" href="/create">Create</a>
             </li>
           </ul>
         </div>
