@@ -16,7 +16,12 @@ const router = createRouter({
       path: '/create',
       name: 'Create Customer',
       component: CreateCustomerView
-    }
+    },
+    {
+      path: '/:pathMatch(.*)*', // This is the catch-all route
+      name: 'View Customers',
+      component: AllCustomersView,
+    },
   ]
 })
 
