@@ -5,7 +5,7 @@ import DataTable from 'datatables.net-bs5';
 
 import type { Customer } from '@/types/Customer';
 import { getCustomers } from '@/services/customerService';
-import { calculateAge } from '@/utilities/index'
+import { calculateAge } from '@/utilities/index';
 
 const customers = reactive<Customer[]>([]);
 const isDataFetched = ref(false);
@@ -27,7 +27,7 @@ const initializeUIComponents = () => {
   // Ensure DOM is fully loaded
   nextTick(() => {
     // Initialize Popover & allow popovers to be dismissed when focus is lost after DOM is updated from api request
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl =>
       new Popover(popoverTriggerEl, {
         trigger: "focus",
@@ -39,7 +39,7 @@ const initializeUIComponents = () => {
     new DataTable("#customer-table", {
       pagingType: "simple"
     });
-  })
+  });
 }
 
 const getPopoverContent = (customer: Customer) => {
@@ -50,7 +50,7 @@ const getPopoverContent = (customer: Customer) => {
     <p><span class="fw-bold">Primary Address:</span> ${formattedAddress ? formattedAddress : "N/A"}</p>
     <p><span class="fw-bold">Mobile Phone:</span> ${customer.mobile_phone_number ? customer.mobile_phone_number : "N/A"}</p>
     <p><span class="fw-bold">Join Date:</span> ${customer.join_date ? customer.join_date : "N/A"}</p>
-  `
+  `;
 
   return popoverContent;
 };
@@ -107,6 +107,7 @@ onMounted(() => {
 
 /* DataTable is scrollable for responsiveness */
 .col-sm-12:has(#customer-table) {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   overflow-x: auto;
 }
 
@@ -117,6 +118,7 @@ onMounted(() => {
 
 <template>
   <div>
+    <h1 class="h3 p-2 text-center">View Customers</h1>
     <div v-if="customers.length > 0" class="table-container my-3">
       <table id="customer-table" class="table table-striped table-hover fade-in my-3">
         <thead>
